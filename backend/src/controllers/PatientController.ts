@@ -1,8 +1,8 @@
-// import { InputPerson, localPersonController } from './PersonsController';
+import { Family } from './../models/Family';
+import { Comorbiditie } from './../models/Comorbiditie';
 import { Request, Response } from "express"
-// import { getRepository } from 'typeorm'
-// import Client from "../models/Client"
-
+import { getRepository } from 'typeorm'
+import { Gender, Patient } from '../models/Patient'
 
 export default {
     async delete(request: Request, response: Response) {
@@ -33,22 +33,17 @@ export default {
     },
 
     async create(request: Request, response: Response) {
-        // const { address, person, client } = getValuesFromRequest(request)
-        // const personToSave = await localPersonController.create(person, address)
+        const { name, birthDate, gender: inputGender, comorbiditie, family } = request.body
+        const gender = inputGender.toUpperCase()
 
+        const repository = getRepository(Patient)
+        const patientToSave = repository.create({
+            name, birthDate, gender, comorbiditie, family
+        })
 
-        // const repository = getRepository(Client)
-        // const clientToSave = repository.create({
-        //     score: client.score,
-        //     nickName: client.nickname,
-        //     person: personToSave
-        // })
+        const result = await repository.save(patientToSave)
 
-        // const result = await repository.save(clientToSave)
-
-        // return response.status(201).json({ result })
-        return response.status(200).json({ message: `create: i'm not working` })
-
+        return response.status(201).json({ result })
     }
 }
 
