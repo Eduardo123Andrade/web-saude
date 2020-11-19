@@ -4,7 +4,7 @@ import { checkAuth } from '../middleware/check-auth'
 
 const routes = Router()
 
-routes.post('/doctor', checkAuth, DoctorController.create)
+routes.post('/doctor', DoctorController.create)
 routes.get('/doctor', checkAuth, DoctorController.index)
 routes.get('/doctor/:id', checkAuth, DoctorController.show)
 routes.delete('/doctor/:id', checkAuth, DoctorController.delete)

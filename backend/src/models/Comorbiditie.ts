@@ -29,9 +29,6 @@ export class Comorbiditie {
     @Column({name: 'heart_disease', default: 0})
     heartDisease: boolean
     
-    // @Column()
-    // comorbidities: boolean
-
     @OneToOne(() => Patient, patient => patient.comorbiditie, {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     patient: Patient
 
