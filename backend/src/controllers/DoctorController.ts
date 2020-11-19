@@ -4,24 +4,26 @@ import { getRepository } from 'typeorm'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import doctorView from '../view/DoctorView'
+import * as yup from 'yup'
+
 
 export default {
-    async login(request: Request, response: Response){
-        const {password, crm } = request.body
+    async login(request: Request, response: Response) {
+        const { password, crm } = request.body
         const repository = getRepository(Doctor)
 
-        const doctor = await repository.findOneOrFail({where: {crm: crm}})
+        const doctor = await repository.findOneOrFail({ where: { crm: crm } })
         const compare = await bcrypt.compare(password, doctor.password)
 
-        if(!compare) response.status(401).json({message: 'Erro na autenticação'})
+        if (!compare) response.status(401).json({ message: 'Erro na autenticação' })
 
         const token = jwt.sign(
             { name: doctor.name, userId: doctor.id },
             'secret_this_should_be_longer_okay',
             { expiresIn: "1h" }
-          );
+        );
 
-        return response.status(200).json({token})
+        return response.status(200).json({ token })
     },
 
     async delete(request: Request, response: Response) {
@@ -51,12 +53,26 @@ export default {
         const { name, password, crm } = request.body
         const salts = 10
 
-       const hash = await bcrypt.hash(password, salts)
+        
+        const data = {
+            name, password, crm
+        }
+        
+        const schema = yup.object().shape({
+            name: yup.string().required('Nome é obrigatorio'),
+            password: yup.string().required('Senha é obrigatorio').min(6, 'A seha deve conter no minimo 6 caracteres'),
+            crm: yup.string().required('Numero do CRM é obrigatorio').length(6, 'O numero do CRM é exatamente 6 caracteres'),
+        })
+
+
+        await schema.validate(data, { abortEarly: false })
+
+        const hash = await bcrypt.hash(password, salts)
+        
+        data.password = hash
 
         const repository = getRepository(Doctor)
-        const doctorToSave = repository.create({
-            name, password: hash, crm
-        })
+        const doctorToSave = repository.create(data)
 
         const result = await repository.save(doctorToSave)
 
