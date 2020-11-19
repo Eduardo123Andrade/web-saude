@@ -11,7 +11,7 @@ export class Family {
     // @Column({ name: 'comorbidities_id' })
     // comorbiditiesId: number
 
-    @OneToOne(() => Comorbiditie, comorbiditie => comorbiditie.id, {cascade: true})
+    @OneToOne(() => Comorbiditie, comorbiditie => comorbiditie.id,  {cascade: true, onDelete: "CASCADE"})
     @JoinColumn({name: 'comorbidities_id'})
     comorbiditie: Comorbiditie
 

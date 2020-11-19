@@ -1,3 +1,4 @@
+import { Family } from './Family';
 import { Patient } from './Patient';
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -31,6 +32,9 @@ export class Comorbiditie {
     // @Column()
     // comorbidities: boolean
 
-    // @OneToOne(() => Patient, patient => patient.comorbiditie)
-    // patient: Patient
-}
+    @OneToOne(() => Patient, patient => patient.comorbiditie)
+    patient: Patient
+
+    @OneToOne(() => Family, family => family.comorbiditie)
+    family: Family
+}   

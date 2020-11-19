@@ -1,3 +1,4 @@
+import { Comorbiditie } from './../models/Comorbiditie';
 import { Family } from './../models/Family';
 import { Patient } from './../models/Patient';
 import { Request, Response } from "express"
@@ -5,12 +6,14 @@ import { getRepository } from 'typeorm'
 
 export default {
     async delete(request: Request, response: Response) {
-        // const { id } = request.params
-        // const repository = getRepository(Client)
-        // await repository.findOneOrFail({ where: { id: id }, relations: ['person'] })
-        // await repository.delete(id)
-        // return response.status(200).json({ message: `id ${id} deletado` })
-        return response.status(200).json({ message: `delete: i'm not working` })
+        const { id } = request.params
+        const repository = getRepository(Patient)
+        const {family, comorbiditie} = await repository.findOneOrFail({where: { id: id }, relations: ['family', 'comorbiditie']})
+        
+        await deleteFamilyAndComorbiditie(family, comorbiditie);
+        
+        await repository.delete(id)
+        return response.status(200).json({ message: `id ${id} deletado` })
     },
 
     async show(request: Request, response: Response) {
@@ -44,17 +47,12 @@ export default {
 }
 
 
-// function getValuesFromRequest(request: Request) {
-//     const { address } = request.body
 
-//     const { name, lastName, cpf, email, password,
-//         birthDate, phoneNumber: initialPhoneNumber } = request.body
-
-//     const person: InputPerson =
-//         { name, lastName, cpf, email, password, birthDate, initialPhoneNumber }
-
-//     const { score, nickname } = request.body
-//     const client = { score, nickname }
-
-//     return { address, person, client }
-// }
+async function deleteFamilyAndComorbiditie(family: Family, comorbiditie: Comorbiditie) {
+    const familyRepository = getRepository(Family);
+    const familyResult = await familyRepository.findOneOrFail({ where: { id: family.id }, relations: ['comorbiditie'] });
+    const comorbiditieRepository = getRepository(Comorbiditie);
+    await comorbiditieRepository.delete(familyResult.comorbiditie.id);
+    await comorbiditieRepository.delete(comorbiditie.id);
+    await familyRepository.delete(family.id);
+}
