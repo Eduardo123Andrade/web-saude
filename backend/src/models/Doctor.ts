@@ -12,7 +12,7 @@ export class Doctor {
     @Column()
     password: string
     
-    @Column()
+    @Column({unique: true})
     crm: string
 
 }
