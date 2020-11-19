@@ -1,6 +1,7 @@
+import { Family } from './../models/Family';
+import { Patient } from './../models/Patient';
 import { Request, Response } from "express"
 import { getRepository } from 'typeorm'
-import { Patient } from '../models/Patient'
 
 export default {
     async delete(request: Request, response: Response) {
@@ -23,11 +24,9 @@ export default {
 
     },
     async index(request: Request, response: Response) {
-        // const repository = getRepository(Client)
-        // const clients = await repository.find({ relations: ['person'] })
-        // return response.status(200).json(clients)
-        return response.status(200).json({ message: `index: i'm not working` })
-
+        const repository = getRepository(Patient)
+        const patients = await repository.find({relations: ['family', 'comorbiditie']})
+        return response.status(200).json(patients)
     },
 
     async create(request: Request, response: Response) {
