@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class patient1605751257715 implements MigrationInterface {
 
@@ -13,7 +13,7 @@ export class patient1605751257715 implements MigrationInterface {
                     isPrimary: true,
                     isGenerated: true,
                     generationStrategy: 'increment'
-                }, 
+                },
                 {
                     name: 'name',
                     type: 'varchar',
