@@ -18,37 +18,37 @@ export class comorbidities1605751314330 implements MigrationInterface {
                     {
                         name: 'smoke',
                         type: 'boolean',
-                        default: false
+                        default: '0'
                     },
                     {
                         name: 'drink',
                         type: 'boolean',
-                        default: false
+                        default: '0'
                     },
                     {
                         name: 'hypertension',
                         type: 'boolean',
-                        default: false
+                        default: '0'
                     },
                     {
                         name: 'hypotension',
                         type: 'boolean',
-                        default: false
+                        default: '0'
                     },
                     {
                         name: 'heart_disease',
                         type: 'boolean',
-                        default: false
+                        default: '0'
                     },
                     {
                         name: 'diabetes',
                         type: 'boolean',
-                        default: false
+                        default: '0'
                     },
                     {
                         name: 'asthma',
                         type: 'boolean',
-                        default: false
+                        default: '0'
                     },
                 ]
             }
