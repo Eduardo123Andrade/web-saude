@@ -8,10 +8,10 @@ export default {
     async delete(request: Request, response: Response) {
         const { id } = request.params
         const repository = getRepository(Patient)
-        const {family, comorbiditie} = await repository.findOneOrFail({where: { id: id }, relations: ['family', 'comorbiditie']})
-        
+        const { family, comorbiditie } = await repository.findOneOrFail({ where: { id: id }, relations: ['family', 'comorbiditie'] })
+
         await deleteFamilyAndComorbiditie(family, comorbiditie);
-        
+
         await repository.delete(id)
         return response.status(200).json({ message: `id ${id} deletado` })
     },
@@ -20,14 +20,14 @@ export default {
         const { id } = request.params
         const repository = getRepository(Patient)
         const patient = await repository
-            .findOneOrFail({
-                where: { id: id }, relations: ['family', 'comorbiditie']
-            })
+            .findOneOrFail({ where: { id: id } }).catch(err => console.log(err))
+
         return response.status(200).json(patient)
     },
     async index(request: Request, response: Response) {
         const repository = getRepository(Patient)
-        const patients = await repository.find({ relations: ['family', 'comorbiditie'] })
+        const patients = await repository.find()
+
         return response.status(200).json(patients)
     },
 

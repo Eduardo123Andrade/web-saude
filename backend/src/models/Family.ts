@@ -8,15 +8,12 @@ export class Family {
     @PrimaryGeneratedColumn()
     id: number
 
-    // @Column({ name: 'comorbidities_id' })
-    // comorbiditiesId: number
-
-    @OneToOne(() => Comorbiditie, comorbiditie => comorbiditie.id,  {cascade: true, onDelete: "CASCADE"})
-    @JoinColumn({name: 'comorbidities_id'})
+    @OneToOne(() => Comorbiditie, comorbiditie => comorbiditie.id, { eager: true, cascade: true, onDelete: "CASCADE" })
+    @JoinColumn({ name: 'comorbidities_id' })
     comorbiditie: Comorbiditie
 
-    
-    // @OneToOne(() => Patient, patient => patient.family)
-    // patient: Patient
+
+    @OneToOne(() => Patient, patient => patient.family, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+    patient: Patient
 
 }

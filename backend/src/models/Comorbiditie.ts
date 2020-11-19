@@ -32,9 +32,9 @@ export class Comorbiditie {
     // @Column()
     // comorbidities: boolean
 
-    @OneToOne(() => Patient, patient => patient.comorbiditie)
+    @OneToOne(() => Patient, patient => patient.comorbiditie, {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     patient: Patient
 
-    @OneToOne(() => Family, family => family.comorbiditie)
+    @OneToOne(() => Family, family => family.comorbiditie, {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     family: Family
 }   

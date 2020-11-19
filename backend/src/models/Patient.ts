@@ -24,20 +24,18 @@ export class Patient {
 
 
     @OneToOne(() => Comorbiditie, comorbiditie => comorbiditie.id, {
-        cascade: true,
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
+        eager: true,
+        cascade: ['insert', 'update', 'remove']
     })
-    @JoinColumn({name: 'comorbidities_id'})
+    @JoinColumn({ name: 'comorbidities_id' })
     comorbiditie: Comorbiditie
 
 
     @OneToOne(() => Family, family => family.id, {
-        cascade: true,
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
+        eager: true,
+        cascade: ['insert', 'update', 'remove']
     })
-    @JoinColumn({name: 'family_id'})
+    @JoinColumn({ name: 'familys_id' })
     family: Family
 
 }
