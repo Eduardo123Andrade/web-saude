@@ -16,17 +16,20 @@ export class doctors1605815225240 implements MigrationInterface {
                 },
                 {
                     name: 'name',
-                    type: 'varchar'
+                    type: 'varchar',
+                    isNullable: false
                 },
                 {
                     name: 'password',
                     type: 'varchar',
+                    isNullable: false
                 },
                 {
                     name: 'crm',
                     type: 'varchar',
                     length: '6',
                     isUnique: true,
+                    isNullable: false
                 }
             ]
         }))

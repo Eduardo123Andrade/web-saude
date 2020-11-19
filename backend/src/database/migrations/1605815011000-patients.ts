@@ -17,16 +17,20 @@ export class patients1605815011000 implements MigrationInterface {
                 {
                     name: 'name',
                     type: 'varchar',
+                    isNullable: false
                 },
                 {
                     name: 'birth_date',
                     type: 'varchar',
-                    length: '10'
+                    length: '10',
+                    isNullable: false
                 },
                 {
                     name: 'gender',
                     type: "enum",
-                    enum: ['M', 'F']
+                    enum: ['M', 'F'],
+                    isNullable: false
+
                 },
                 {
                     name: 'comorbidity_id',
@@ -37,6 +41,7 @@ export class patients1605815011000 implements MigrationInterface {
                     name: 'family_id',
                     type: 'integer',
                     unsigned: true,
+                    isNullable: true
                 },
             ],
             foreignKeys: [
