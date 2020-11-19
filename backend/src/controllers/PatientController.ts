@@ -1,8 +1,6 @@
-import { Family } from './../models/Family';
-import { Comorbiditie } from './../models/Comorbiditie';
 import { Request, Response } from "express"
 import { getRepository } from 'typeorm'
-import { Gender, Patient } from '../models/Patient'
+import { Patient } from '../models/Patient'
 
 export default {
     async delete(request: Request, response: Response) {
@@ -43,7 +41,7 @@ export default {
 
         const result = await repository.save(patientToSave)
 
-        return response.status(201).json({ result })
+        return response.status(201).json({ message: 'Novo paciente cadastrado', result })
     }
 }
 
