@@ -1,13 +1,14 @@
 import { Router } from 'express'
 import PatientController from '../controllers/PatientController'
+import { checkAuth } from '../middleware/check-auth'
 
 
 const routes = Router()
 
-routes.post('/patient', PatientController.create)
-routes.get('/patient', PatientController.index)
-routes.get('/patient/:id', PatientController.show)
-routes.delete('/patient/:id', PatientController.delete)
+routes.post('/patient', checkAuth, PatientController.create)
+routes.get('/patient', checkAuth, PatientController.index)
+routes.get('/patient/:id', checkAuth, PatientController.show)
+routes.delete('/patient/:id', checkAuth, PatientController.delete)
 
 
 export default routes;
