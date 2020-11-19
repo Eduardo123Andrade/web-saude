@@ -1,12 +1,13 @@
-import {MigrationInterface, QueryRunner, Table, TableColumn, TableForeignKey} from "typeorm";
+import {MigrationInterface, QueryRunner, TableColumn, TableForeignKey} from "typeorm";
 
-export class addComordiditesCollumnIdInPatient1605744762210 implements MigrationInterface {
+export class addComordiditesCollumnIdInPatient1605751365964 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.addColumn('patients', new TableColumn({
             name: 'comorbidities_id',
             type: 'integer',
             unsigned: true,
+            default: null
         } ))
 
         await queryRunner.createForeignKey('patients', new TableForeignKey({
