@@ -1,8 +1,9 @@
-import { Doctor } from './../models/Doctor';
+import { Doctor } from '../models/Doctor';
 import { Request, Response } from "express"
 import { getRepository } from 'typeorm'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import doctorView from '../view/DoctorView'
 
 export default {
     async login(request: Request, response: Response){
@@ -35,15 +36,15 @@ export default {
         const { id } = request.params
         const repository = getRepository(Doctor)
         const doctor = await repository
-            .findOneOrFail({ where: { id: id } }).catch(err => console.log(err))
+            .findOneOrFail({ where: { id: id } })
 
-        return response.status(200).json(doctor)
+        return response.status(200).json(doctorView.render(doctor))
     },
     async index(request: Request, response: Response) {
         const repository = getRepository(Doctor)
         const doctors = await repository.find()
 
-        return response.status(200).json(doctors)
+        return response.status(200).json(doctorView.renderMany(doctors))
     },
 
     async create(request: Request, response: Response) {
