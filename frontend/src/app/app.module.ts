@@ -14,7 +14,8 @@ import { LoginComponent } from './component/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreatePatientComponent } from './component/create-patient/create-patient.component';
 import { MatRadioModule } from '@angular/material/radio';
-import { ChronicDiseasesComponent } from './component/chronic-diseases/chronic-diseases.component'
+import { ChronicDiseasesComponent } from './component/chronic-diseases/chronic-diseases.component';
+import { CreateDoctorComponent } from './component/create-doctor/create-doctor.component'
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ChronicDiseasesComponent } from './component/chronic-diseases/chronic-d
     LoginComponent,
     CreatePatientComponent,
     ChronicDiseasesComponent,
+    CreateDoctorComponent,
   ],
   imports: [
     BrowserModule,
