@@ -7,9 +7,10 @@ import { CreateDoctorComponent } from './components/create-doctor/create-doctor.
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'create-patient', component: CreatePatientComponent },
   {path: 'create-doctor', component: CreateDoctorComponent },
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
 
 ];
 
