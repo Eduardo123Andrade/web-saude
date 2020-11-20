@@ -11,22 +11,22 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class CreateDoctorComponent implements OnInit {
   doctor: Doctor = { name: '', crm: '', password: '' }
-  public ownerForm: FormGroup = new FormGroup({})
+  public doctorForm: FormGroup = new FormGroup({})
 
 
   constructor(public doctorService: DoctorService) { }
 
   ngOnInit(): void {
-    this.ownerForm = new FormGroup({
+    this.doctorForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(10)]),
       crm: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     });
   }
 
-  cadastrar(ownerFormValue: FormGroup) {
-    if (this.ownerForm.valid)
-      this.registerDoctor(ownerFormValue as unknown as Doctor)
+  cadastrar(doctorFormValue: FormGroup) {
+    if (this.doctorForm.valid)
+      this.registerDoctor(doctorFormValue as unknown as Doctor)
   }
 
   registerDoctor(doctor: Doctor) {
@@ -35,7 +35,7 @@ export class CreateDoctorComponent implements OnInit {
   }
 
   public hasError = (controlName: string, errorName: string) => {
-    return this.ownerForm.controls[controlName].hasError(errorName);
+    return this.doctorForm.controls[controlName].hasError(errorName);
   }
 
 }

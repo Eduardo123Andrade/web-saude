@@ -1,6 +1,6 @@
 <mat-card>
     <p>Cadastro de usuario</p>
-    <form [formGroup]="ownerForm" autocomplete="off" novalidate >
+    <form [formGroup]="doctorForm" autocomplete="off" novalidate >
         <mat-form-field appearance="standard">
             <mat-label>Nome</mat-label>
             <input matInput placeholder="Nome" formControlName='name' required>
@@ -25,7 +25,7 @@
         </mat-form-field>
 
         <div class="button">
-            <button mat-raised-button color="primary" (click)='cadastrar(ownerForm.value)'>Cadastrar</button>
+            <button mat-raised-button color="primary" (click)='cadastrar(doctorForm.value)'>Cadastrar</button>
         </div>
     </form>
 </mat-card>
