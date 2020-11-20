@@ -29,8 +29,7 @@ export class CreateDoctorComponent implements OnInit {
   }
 
   registerDoctor(doctor: Doctor) {
-    console.log(typeof doctor.crm)
-    // this.doctorService.createNewDoctor(doctor)
+    this.doctorService.createNewDoctor(doctor)
   }
 
   public hasError = (controlName: string, errorName: string) => {
