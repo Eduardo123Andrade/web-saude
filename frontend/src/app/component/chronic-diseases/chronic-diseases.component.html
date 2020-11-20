@@ -1,0 +1,13 @@
+<section class="example-section">
+    <span class="example-list-section">
+        <ul>
+            <li *ngFor="let disease of chronicDiseases">
+                <mat-checkbox [(ngModel)]="disease.checked" [color]="disease.color"
+                    (ngModelChange)="updateAllComplete()">
+                    {{disease.name}}
+                </mat-checkbox>
+
+            </li>
+        </ul>
+    </span>
+</section>
