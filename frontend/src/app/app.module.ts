@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ChronicDiseasesComponent } from './components/chronic-diseases/chronic-diseases.component';
 import { CreateDoctorComponent } from './components/create-doctor/create-doctor.component'
@@ -45,7 +46,8 @@ import { RegisterInputComponent } from './components/register-input/register-inp
     MatRadioModule,
     MatCheckboxModule,
     HttpClientModule,
-    AngularSvgIconModule.forRoot()
+    AngularSvgIconModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
