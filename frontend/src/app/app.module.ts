@@ -9,13 +9,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './component/header/header.component';
-import { LoginComponent } from './component/login/login.component';
+import { HeaderComponent } from './components/header/header.component';
+import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CreatePatientComponent } from './component/create-patient/create-patient.component';
+import { CreatePatientComponent } from './components/create-patient/create-patient.component';
 import { MatRadioModule } from '@angular/material/radio';
-import { ChronicDiseasesComponent } from './component/chronic-diseases/chronic-diseases.component';
-import { CreateDoctorComponent } from './component/create-doctor/create-doctor.component'
+import { ChronicDiseasesComponent } from './components/chronic-diseases/chronic-diseases.component';
+import { CreateDoctorComponent } from './components/create-doctor/create-doctor.component'
 
 @NgModule({
   declarations: [
