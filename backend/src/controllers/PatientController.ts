@@ -21,8 +21,9 @@ export default {
     async show(request: Request, response: Response) {
         const { id } = request.params
         const repository = getRepository(Patient)
-        const patient = await repository
-            .findOneOrFail({ where: { id: id } })
+        const patient = await repository.findOne({ where: { id: id } })
+
+        if(!patient) return response.status(404).json({message: 'Medico não encontrado'})
 
         return response.status(200).json(patientView.render(patient))
     },

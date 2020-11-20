@@ -35,10 +35,11 @@ export default {
     },
 
     async show(request: Request, response: Response) {
-        const { id } = request.params
+        const { crm } = request.params
         const repository = getRepository(Doctor)
-        const doctor = await repository
-            .findOneOrFail({ where: { id: id } })
+        const doctor = await repository.findOne({ where: { crm: crm } })
+
+        if(!doctor) return response.status(404).json({message: 'Medico não encontrado'})
 
         return response.status(200).json(doctorView.render(doctor))
     },
@@ -73,9 +74,13 @@ export default {
 
         const repository = getRepository(Doctor)
         const doctorToSave = repository.create(data)
+        try {
+            const result = await repository.save(doctorToSave)
+            return response.status(201).json({ message: 'Novo medico cadastrado', result })
 
-        const result = await repository.save(doctorToSave)
+        }catch (err) {
+            return response.status(400).json({message: `CRM ${crm} já cadastrado`})
+        }
 
-        return response.status(201).json({ message: 'Novo medico cadastrado', result })
     }
 }
