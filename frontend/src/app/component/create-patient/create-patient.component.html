@@ -1,1 +1,35 @@
-<p>create-patient works!</p>
+<mat-card class="container">
+    <p>Registro do Paciente</p>
+    <mat-card class="personal-datails">
+        <mat-form-field appearance="standard">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="gender">
+            <mat-radio-button class="example-radio-button" *ngFor="let gender of genders" [value]="gender"
+                (click)='teste()'>
+                {{gender}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </mat-card>
+
+    <mat-card class="self-details">
+        <p>Doenças Crônicas - Pessoais</p>
+        <app-chronic-diseases></app-chronic-diseases>
+    </mat-card>
+
+    <mat-card class="family-details">
+        <p>Doenças Crônicas - Família</p>
+        <app-chronic-diseases></app-chronic-diseases>
+    </mat-card>
+
+    <div class="button">
+        <button mat-raised-button color="primary" (click)='teste()'>Cadastrar</button>
+    </div>
+</mat-card>

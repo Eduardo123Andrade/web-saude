@@ -1,0 +1,30 @@
+.container {
+    margin: 10%;
+}
+
+.personal-datails {
+    display: flex;
+    justify-content: space-between;
+    /* justify-content: flex-start; */
+
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+
+  mat-card {
+    margin-top: 1%;
+  }
+
+  .button {
+    margin-top: 1%;
+    display: flex;
+    justify-content: flex-end;
+  }
