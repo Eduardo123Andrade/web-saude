@@ -9,7 +9,7 @@ export class HomeComponent implements OnInit {
   
   filePatientPath: string = './../../../assets/imgs/patient.svg'
   componentName: string = 'Cadastro de Paciente'
-  nextRouter: string = 'create-patient'
+  nextRouter: string = '/create-patient'
 
   constructor() { }
 
