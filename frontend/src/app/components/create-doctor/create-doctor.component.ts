@@ -10,7 +10,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./create-doctor.component.css']
 })
 export class CreateDoctorComponent implements OnInit {
-  doctor: Doctor = { name: '', crm: '', password: '' }
   public doctorForm: FormGroup = new FormGroup({})
 
 
