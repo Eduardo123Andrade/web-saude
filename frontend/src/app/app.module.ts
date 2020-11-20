@@ -9,13 +9,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CreatePatientComponent } from './components/create-patient/create-patient.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+
 import { ChronicDiseasesComponent } from './components/chronic-diseases/chronic-diseases.component';
 import { CreateDoctorComponent } from './components/create-doctor/create-doctor.component'
+import { CreatePatientComponent } from './components/create-patient/create-patient.component';
+import { HeaderComponent } from './components/header/header.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from  './components/home/home.component';
+import { RegisterInputComponent } from './components/register-input/register-input.component'
 
 @NgModule({
   declarations: [
@@ -25,6 +30,8 @@ import { CreateDoctorComponent } from './components/create-doctor/create-doctor.
     CreatePatientComponent,
     ChronicDiseasesComponent,
     CreateDoctorComponent,
+    HomeComponent,
+    RegisterInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,9 @@ import { CreateDoctorComponent } from './components/create-doctor/create-doctor.
     MatToolbarModule,
     MatButtonModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClientModule,
+    AngularSvgIconModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

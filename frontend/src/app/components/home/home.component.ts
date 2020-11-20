@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  
+  filePatientPath: string = './../../../assets/imgs/patient.svg'
+  componentName: string = 'Cadastro de Paciente'
+  nextRouter: string = 'create-patient'
 
   constructor() { }
 
