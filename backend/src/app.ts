@@ -9,7 +9,9 @@ import { errorHandler } from './errors/Handler'
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+}))
 app.use(express.json())
 
 app.use(patientRouter)
