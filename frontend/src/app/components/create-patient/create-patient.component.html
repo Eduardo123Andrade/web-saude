@@ -19,16 +19,13 @@
                 </mat-error>
             </mat-form-field>
 
-            <!-- <mat-form-field> -->
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
                 formControlName='gender'>
                 <mat-radio-button class="example-radio-button" *ngFor="let gender of genders; let i = index"
                     [value]="gender.value" required [checked]='gender.checked' >
                     {{gender.value}}
                 </mat-radio-button>
-                <!-- <mat-error *ngIf="hasError('gender', 'required')">Genero é obrigatorio</mat-error> -->
             </mat-radio-group>
-            <!-- </mat-form-field> -->
 
         </mat-card>
 

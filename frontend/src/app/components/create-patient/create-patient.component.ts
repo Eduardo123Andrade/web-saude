@@ -2,7 +2,7 @@ import { PatientService } from './../../services/patient/patient.service';
 import { Comorbidity } from './../../models/Comorbidity';
 import { Patient } from './../../models/Patient';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms'
+import { FormControl, FormGroup, Validators} from '@angular/forms'
 
 
 interface Gender {

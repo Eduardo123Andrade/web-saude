@@ -1,8 +1,6 @@
-import { Patient } from './../../models/Patient';
 import { Comorbidity } from './../../models/Comorbidity';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import { IfStmt } from '@angular/compiler';
 
 interface ChronicDiseases {
   name: string
@@ -78,30 +76,7 @@ export class ChronicDiseasesComponent implements OnInit {
         break;
       }
 
-
     }
   }
-
-
-  updateAllComplete() {
-    // this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
-  }
-
-  someComplete(): boolean {
-    // if (this.task.subtasks == null) {
-    //   return false;
-    // }
-    // return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
-    return true
-  }
-
-  setAll(completed: boolean) {
-    // this.allComplete = completed;
-    // if (this.task.subtasks == null) {
-    //   return;
-    // }
-    // this.task.subtasks.forEach(t => t.completed = completed);
-  }
-
 }
 

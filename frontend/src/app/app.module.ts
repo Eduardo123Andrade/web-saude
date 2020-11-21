@@ -55,5 +55,4 @@ import { RegisterInputComponent } from './components/register-input/register-inp
   bootstrap: [AppComponent]
 })
 
-// export const options: Partial<IConfig> | (() => Partial<IConfig>) = null
 export class AppModule { }
