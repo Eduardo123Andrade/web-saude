@@ -9,8 +9,6 @@ interface ChronicDiseases {
   fieldName: string
 }
 
-
-
 @Component({
   selector: 'app-chronic-diseases',
   templateUrl: './chronic-diseases.component.html',
