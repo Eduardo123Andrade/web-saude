@@ -1,19 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import {ThemePalette} from '@angular/material/core';
-
-
-export interface Task {
-  name: string;
-  completed: boolean;
-  color: ThemePalette;
-  subtasks?: Task[];
-}
+import { Patient } from './../../models/Patient';
+import { Comorbidity } from './../../models/Comorbidity';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
+import { IfStmt } from '@angular/compiler';
 
 interface ChronicDiseases {
   name: string
   checked: boolean
-  color: ThemePalette
+  color: ThemePalette,
+  fieldName: string
 }
+
+
 
 @Component({
   selector: 'app-chronic-diseases',
@@ -21,26 +19,21 @@ interface ChronicDiseases {
   styleUrls: ['./chronic-diseases.component.css']
 })
 export class ChronicDiseasesComponent implements OnInit {
-  chronicDiseases: ChronicDiseases[] = [
-    {name: 'Fuma', checked: false, color: 'primary'},
-    {name: 'Bebe', checked: false, color: 'primary'},
-    {name: 'Hipertensão', checked: false, color: 'primary'},
-    {name: 'Hipotensão', checked: false, color: 'primary'},
-    {name: 'Doença cardiaca', checked: false, color: 'primary'},
-    {name: 'Diabetes', checked: false, color: 'primary'},
-    {name: 'Asma', checked: false, color: 'primary'},
-  ]
+  @Output() eventEmitter = new EventEmitter()
 
-  task: Task = {
-    name: 'Indeterminate',
-    completed: false,
-    color: 'primary',
-    subtasks: [
-      { name: 'Primary', completed: false, color: 'primary' },
-      { name: 'Accent', completed: false, color: 'accent' },
-      { name: 'Warn', completed: false, color: 'warn' }
-    ]
-  };
+  comorbidities: Comorbidity = {
+    asthma: false, diabetes: false, drink: false, heartDisease: false, hypertension: false, hypotension: false, smoke: false
+  }
+
+  chronicDiseases: ChronicDiseases[] = [
+    { name: 'Fuma', checked: false, color: 'primary', fieldName: 'smoke' },
+    { name: 'Bebe', checked: false, color: 'primary', fieldName: 'drink' },
+    { name: 'Hipertensão', checked: false, color: 'primary', fieldName: 'hypertension' },
+    { name: 'Hipotensão', checked: false, color: 'primary', fieldName: 'hypotension' },
+    { name: 'Doença cardiaca', checked: false, color: 'primary', fieldName: 'heartDisease' },
+    { name: 'Diabetes', checked: false, color: 'primary', fieldName: 'diabetes' },
+    { name: 'Asma', checked: false, color: 'primary', fieldName: 'asthma' },
+  ]
 
   allComplete: boolean = false;
 
@@ -49,23 +42,65 @@ export class ChronicDiseasesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  changeChecked(disease: ChronicDiseases) {
+    this.updateComorbidities(disease.fieldName, disease.checked)
+    this.eventEmitter.emit(this.comorbidities)
+  }
+
+  updateComorbidities(fieldName: string, checked: boolean) {
+    switch (fieldName) {
+      case 'smoke': {
+        this.comorbidities[fieldName] = checked
+        break;
+      }
+      case 'drink': {
+        this.comorbidities[fieldName] = checked
+        break;
+      }
+      case 'hypertension': {
+        this.comorbidities[fieldName] = checked
+        break;
+      }
+      case 'hypotension': {
+        this.comorbidities[fieldName] = checked
+        break;
+      }
+      case 'heartDisease': {
+        this.comorbidities[fieldName] = checked
+        break;
+      }
+      case 'diabetes': {
+        this.comorbidities[fieldName] = checked
+        break;
+      }
+      case 'asthma': {
+        this.comorbidities[fieldName] = checked
+        break;
+      }
+
+
+    }
+  }
+
+
   updateAllComplete() {
-    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+    // this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
   }
 
   someComplete(): boolean {
-    if (this.task.subtasks == null) {
-      return false;
-    }
-    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
+    // if (this.task.subtasks == null) {
+    //   return false;
+    // }
+    // return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
+    return true
   }
 
   setAll(completed: boolean) {
-    this.allComplete = completed;
-    if (this.task.subtasks == null) {
-      return;
-    }
-    this.task.subtasks.forEach(t => t.completed = completed);
+    // this.allComplete = completed;
+    // if (this.task.subtasks == null) {
+    //   return;
+    // }
+    // this.task.subtasks.forEach(t => t.completed = completed);
   }
 
 }

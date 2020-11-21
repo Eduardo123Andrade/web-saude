@@ -14,13 +14,14 @@ import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 import { ChronicDiseasesComponent } from './components/chronic-diseases/chronic-diseases.component';
 import { CreateDoctorComponent } from './components/create-doctor/create-doctor.component'
 import { CreatePatientComponent } from './components/create-patient/create-patient.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from  './components/home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { RegisterInputComponent } from './components/register-input/register-input.component'
 
 @NgModule({
@@ -47,9 +48,12 @@ import { RegisterInputComponent } from './components/register-input/register-inp
     MatCheckboxModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
+// export const options: Partial<IConfig> | (() => Partial<IConfig>) = null
 export class AppModule { }

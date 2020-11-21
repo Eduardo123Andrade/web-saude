@@ -6,5 +6,4 @@ export interface Comorbidity {
     heartDisease:boolean,
     diabetes:boolean,
     asthma:boolean
-
 }
