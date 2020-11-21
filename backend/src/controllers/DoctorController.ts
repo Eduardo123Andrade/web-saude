@@ -23,7 +23,7 @@ export default {
             { expiresIn: "1h" }
         );
 
-        return response.status(200).json({ token })
+        return response.status(200).json({ token, expiresIn: 3600 })
     },
 
     async delete(request: Request, response: Response) {
