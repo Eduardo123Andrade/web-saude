@@ -11,7 +11,7 @@ const BACKEND_URL = environment.apiUrl + "/doctor/"
 })
 export class DoctorService {
 
-  constructor(public http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
   createNewDoctor(doctor: Doctor) {
