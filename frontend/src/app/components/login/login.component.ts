@@ -1,4 +1,6 @@
+import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthData } from 'src/app/services/auth/auth-data';
 
 @Component({
   selector: 'app-login',
@@ -6,14 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+  authData: AuthData = {
+    crm: '', 
+    password: ''
+  }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  teste(){
-    console.log("i'm working!")
+  login(){
+    this.authService.login(this.authData)
   }
 
 }
