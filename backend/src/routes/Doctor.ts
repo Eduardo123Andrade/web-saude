@@ -4,10 +4,10 @@ import { checkAuth } from '../middleware/check-auth'
 
 const routes = Router()
 
-routes.post('/doctor', checkAuth, DoctorController.create)
-routes.get('/doctor', checkAuth, DoctorController.index)
-routes.get('/doctor/:crm', checkAuth, DoctorController.show)
-routes.delete('/doctor/:crm', checkAuth, DoctorController.delete)
-routes.post('/doctor/auth/login', DoctorController.login)
+routes.post('/doctors', checkAuth, DoctorController.create)
+routes.get('/doctors', checkAuth, DoctorController.index)
+routes.get('/doctors/:crm', checkAuth, DoctorController.show)
+routes.delete('/doctors/:crm', checkAuth, DoctorController.delete)
+routes.post('/doctors/auth/login', DoctorController.login)
 
 export default routes
