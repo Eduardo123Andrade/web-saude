@@ -33,6 +33,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ListDoctorsComponent } from './components/list-doctors/list-doctors.component';
 import { SwitchComponentsComponent } from './components/switch-components/switch-components.component';
 import { DeleteDoctorsComponent } from './components/delete-doctors/delete-doctors.component';
+import { ShowDoctorComponent } from './components/show-doctor/show-doctor.component';
+import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { DeleteDoctorsComponent } from './components/delete-doctors/delete-docto
     ListDoctorsComponent,
     SwitchComponentsComponent,
     DeleteDoctorsComponent,
+    ShowDoctorComponent,
+    DoctorDetailsComponent,
   ],
   imports: [
     BrowserModule,

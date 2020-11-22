@@ -48,4 +48,19 @@ export class DoctorService {
       })
   }
 
+
+  async searchDoctor(doctor: Doctor): Promise<Doctor> {
+    const link = `${BACKEND_URL}/${doctor.crm}`
+    return this.http.get(link)
+      .toPromise()
+      .then(result => {
+        const doctor: Doctor = result as Doctor
+        return {
+          id: doctor.id,
+          crm: doctor.crm,
+          name: doctor.name
+        }
+      })
+  }
+
 }

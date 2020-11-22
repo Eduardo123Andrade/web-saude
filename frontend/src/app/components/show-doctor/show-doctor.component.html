@@ -1,13 +1,13 @@
-<p>Deletar Medico</p>
-
+<p>Procurar Medico</p>
 <mat-form-field class="example-full-width">
     <mat-label>CRM</mat-label>
     <span matPrefix> &nbsp;</span>
     <input type="number" matInput placeholder="CRM" [(ngModel)]='crm'>
 </mat-form-field>
 
-<button mat-button color="primary" (click)="delete()">
-    <mat-icon>delete</mat-icon>
+<button mat-button color="primary" (click)="search()">
+    <mat-icon>search</mat-icon>
 </button>
 
-<p *ngIf="deleted">Medico deletado</p>
+
+<app-doctor-details *ngIf="isValidDoctor" [doctor]='doctor' ></app-doctor-details>

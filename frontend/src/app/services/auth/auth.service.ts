@@ -5,7 +5,7 @@ import { environment } from "../../../environments/environment.prod";
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
-const BACKEND_URL = environment.apiUrl + "/doctor"
+const BACKEND_URL = environment.apiUrl + "/doctors"
 
 @Injectable({
   providedIn: 'root'

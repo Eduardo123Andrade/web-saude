@@ -15,7 +15,6 @@ export class ListDoctorsComponent implements OnInit {
 
   async ngOnInit() {
     this.doctors = await this.doctorService.listDoctors()
-    console.log(this.doctors)
   }
 
 }
