@@ -1,0 +1,15 @@
+mat-card {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50%;
+    width: 30%;
+}
+
+button {
+    justify-self: flex-end;
+}

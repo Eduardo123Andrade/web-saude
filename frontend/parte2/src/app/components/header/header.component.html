@@ -1,0 +1,4 @@
+<mat-toolbar color="primary">
+    <span routerLink='/home'>Web-Medico-Consulta</span>
+    <span *ngIf="userIsAuthenticated" (click)='logout()'>Sair</span>
+</mat-toolbar>
