@@ -27,11 +27,14 @@ export default {
     },
 
     async delete(request: Request, response: Response) {
-        const { id } = request.params
+        const { crm } = request.params
         const repository = getRepository(Doctor)
 
-        await repository.delete(id)
-        return response.status(200).json({ message: `id ${id} deletado` })
+        const doctor = await repository.findOne({where: {crm: crm}})
+        if(!doctor) return response.status(404).json({message: `CRM ${crm} não encontrado`})
+
+        await repository.delete(doctor)
+        return response.status(200).json({ message: `CRM ${crm} deletado` })
     },
 
     async show(request: Request, response: Response) {
