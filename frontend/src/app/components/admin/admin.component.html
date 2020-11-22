@@ -1,0 +1,18 @@
+<mat-card class="container">
+    <mat-card class="menu-actions">
+        <ul>
+            <li *ngFor="let filePath of filesPath">
+                <mat-card-content>
+                    <button mat-button color="primary" 
+                    (click)="setAction(filePath.action)">{{filePath.name}}</button>
+                </mat-card-content>
+            </li>
+        </ul>
+    </mat-card>
+
+    <mat-card class="show-actions">
+        <app-switch-components  [action]='action' *ngIf="showComponent"></app-switch-components>
+
+    </mat-card>
+
+</mat-card>

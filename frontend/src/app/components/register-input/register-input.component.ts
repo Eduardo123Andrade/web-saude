@@ -9,7 +9,7 @@ export class RegisterInputComponent implements OnInit {
 
   @Input() filePath: string = './../../../assets/imgs/doctor.svg'
   @Input() componentName: string = 'Cadastro de Medicos'
-  @Input() nextRouter: string = '/create-doctor'
+  @Input() nextRouter: string = '/admin'
 
   constructor() { }
 

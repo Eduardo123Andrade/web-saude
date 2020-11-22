@@ -22,4 +22,22 @@ export class DoctorService {
       })
   }
 
+
+  // async listDoctors() {
+  async listDoctors(): Promise<Doctor[]> {
+    const link = BACKEND_URL
+    return this.http.get(link)
+      .toPromise()
+      .then(result => {
+        const doctors = result as Doctor[]
+        return doctors.map(doctor => {
+          return {
+            id: doctor.id,
+            name: doctor.name,
+            crm: doctor.crm
+          }
+        })
+      })
+  }
+
 }

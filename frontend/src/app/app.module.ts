@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatButtonModule } from '@angular/material/button'
 import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatIconModule } from '@angular/material/icon'
+import { MatTableModule } from '@angular/material/table'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +16,10 @@ import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule } from 'ngx-mask'
+import { MatListModule } from '@angular/material/list'
+import { CdkTableModule } from '@angular/cdk/table'
+import { MatDividerModule } from '@angular/material/divider'
 
 import { ChronicDiseasesComponent } from './components/chronic-diseases/chronic-diseases.component';
 import { CreateDoctorComponent } from './components/create-doctor/create-doctor.component'
@@ -24,6 +29,9 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterInputComponent } from './components/register-input/register-input.component'
 import { AuthInterceptor } from './services/auth/auth-interceptor';
+import { AdminComponent } from './components/admin/admin.component';
+import { ListDoctorsComponent } from './components/list-doctors/list-doctors.component';
+import { SwitchComponentsComponent } from './components/switch-components/switch-components.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +43,9 @@ import { AuthInterceptor } from './services/auth/auth-interceptor';
     CreateDoctorComponent,
     HomeComponent,
     RegisterInputComponent,
+    AdminComponent,
+    ListDoctorsComponent,
+    SwitchComponentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,12 +58,17 @@ import { AuthInterceptor } from './services/auth/auth-interceptor';
     MatButtonModule,
     MatRadioModule,
     MatCheckboxModule,
+    MatIconModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
     ReactiveFormsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    MatListModule,
+    CdkTableModule,
+    MatDividerModule,
+    MatTableModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 
