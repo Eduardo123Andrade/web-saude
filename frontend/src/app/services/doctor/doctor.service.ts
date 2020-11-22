@@ -20,11 +20,21 @@ export class DoctorService {
   constructor(private http: HttpClient) { }
 
 
-  createNewDoctor(doctor: Doctor) {
+  async createNewDoctor(doctor: Doctor): Promise<{ message: string }> {
     const link = BACKEND_URL
-    this.http.post<{ message: string }>(link, doctor)
-      .subscribe((responseData) => {
-        console.log(responseData)
+    return this.http.post<{ message: string }>(link, doctor)
+      .toPromise()
+      .then((responseData) => {
+        return {
+          message: responseData.message
+        }
+      })
+      .catch(err => {
+        throw new HtttpErrorHandler({
+          isError: true,
+          errorMessage: err.error.message,
+          status: err.status
+        })
       })
   }
 

@@ -1,6 +1,6 @@
 <mat-card>
     <p>Cadastro de usuario</p>
-    <form [formGroup]="doctorForm" autocomplete="off" novalidate >
+    <form [formGroup]="doctorForm" autocomplete="off" novalidate>
         <mat-form-field appearance="standard">
             <mat-label>Nome</mat-label>
             <input matInput placeholder="Nome" formControlName='name' required>
@@ -24,7 +24,10 @@
             <mat-error *ngIf="hasError('password', 'minlength')">A senha deve ter no minimo 6 caracteres</mat-error>
         </mat-form-field>
 
-        <div class="button">
+        <div class="footer">
+            <p *ngIf="!error.isError">{{sucess.message}}</p>
+            <p *ngIf="error.isError">{{error.errorMessage}}</p>
+
             <button mat-raised-button color="primary" (click)='cadastrar(doctorForm.value)'>Cadastrar</button>
         </div>
     </form>
