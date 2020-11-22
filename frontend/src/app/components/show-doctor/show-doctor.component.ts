@@ -1,3 +1,4 @@
+import { HttpErrorRequest } from './../../errors/HtttpErrorHandler';
 import { DoctorService } from 'src/app/services/doctor/doctor.service';
 import { Doctor } from './../../models/Doctor';
 import { Component, OnInit } from '@angular/core';
@@ -11,18 +12,27 @@ export class ShowDoctorComponent implements OnInit {
   doctor!: Doctor
   crm: string = ''
   isValidDoctor: boolean = false
+  error: HttpErrorRequest = this.defaultErrorValue()
 
   constructor(private doctorService: DoctorService) { }
 
   ngOnInit(): void {
   }
 
-  async search(){
-    this.isValidDoctor = false
-    this.doctor = await this.doctorService.searchDoctor({name: '', crm: this.crm})
-    this.isValidDoctor = !!this.doctor
+  async search() {
+    if (this.crm !== '') {
+      this.isValidDoctor = false
+      this.error = this.defaultErrorValue()
+      try {
+        this.doctor = await this.doctorService.searchDoctor({ name: '', crm: this.crm })
+        this.isValidDoctor = !!this.doctor
+      } catch (err) {
+        this.error = err.error
+      }
+    }
   }
 
-
-
+  defaultErrorValue(): HttpErrorRequest {
+    return { isError: false, errorMessage: '21312312', status: 0 }
+  }
 }

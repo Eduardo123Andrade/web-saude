@@ -1,13 +1,16 @@
 <p>Procurar Medico</p>
-<mat-form-field class="example-full-width">
-    <mat-label>CRM</mat-label>
-    <span matPrefix> &nbsp;</span>
-    <input type="number" matInput placeholder="CRM" [(ngModel)]='crm'>
-</mat-form-field>
+<div class="input">
+    <mat-form-field class="example-full-width">
+        <mat-label>CRM</mat-label>
+        <input type="number" matInput placeholder="CRM" [(ngModel)]='crm'>
+    </mat-form-field>
 
-<button mat-button color="primary" (click)="search()">
-    <mat-icon>search</mat-icon>
-</button>
+    <button mat-button color="primary" (click)="search()">
+        <mat-icon>search</mat-icon>
+    </button>
+
+    <p *ngIf="error.isError">{{error.errorMessage}}</p>
+</div>
 
 
-<app-doctor-details *ngIf="isValidDoctor" [doctor]='doctor' ></app-doctor-details>
+<app-doctor-details *ngIf="isValidDoctor" [doctor]='doctor'></app-doctor-details>

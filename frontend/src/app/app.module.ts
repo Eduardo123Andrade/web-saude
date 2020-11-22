@@ -78,7 +78,9 @@ import { UpdateDoctorDetailComponent } from './components/update-doctor-detail/u
     MatDividerModule,
     MatTableModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 

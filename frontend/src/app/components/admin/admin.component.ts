@@ -28,27 +28,7 @@ export class AdminComponent implements OnInit {
     { iconName: 'user-edit', name: 'Editar Medico', action: Action.UPDATE },
     { iconName: 'user-find', name: 'Procurar Medico', action: Action.FIND },
   ]
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon(
-      'user-add',
-      sanitizer.bypassSecurityTrustResourceUrl('./../../../assets/imgs/user-add.svg'));
-
-    iconRegistry.addSvgIcon(
-      'user-delete',
-      sanitizer.bypassSecurityTrustResourceUrl('./../../../assets/imgs/user-delete.svg'));
-
-    iconRegistry.addSvgIcon(
-      'user-edit',
-      sanitizer.bypassSecurityTrustResourceUrl('./../../../assets/imgs/user-edit.svg'));
-
-    iconRegistry.addSvgIcon(
-      'user-find',
-      sanitizer.bypassSecurityTrustResourceUrl('./../../../assets/imgs/user-find.svg'));
-
-    iconRegistry.addSvgIcon(
-      'user-list',
-      sanitizer.bypassSecurityTrustResourceUrl('./../../../assets/imgs/user-list.svg'));
-  }
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
   }

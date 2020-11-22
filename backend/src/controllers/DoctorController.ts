@@ -35,7 +35,9 @@ export default {
         const { password, crm } = request.body
         const repository = getRepository(Doctor)
 
-        const doctor = await repository.findOneOrFail({ where: { crm: crm } })
+        const doctor = await repository.findOne({ where: { crm: crm } })
+        if (!doctor) return response.status(404).json({ message: 'Medico não Encontrado' })
+        
         const compare = await bcrypt.compare(password, doctor.password)
 
         if (!compare) response.status(401).json({ message: 'Erro na autenticação' })

@@ -1,13 +1,17 @@
 <p>Deletar Medico</p>
 
-<mat-form-field class="example-full-width">
-    <mat-label>CRM</mat-label>
-    <span matPrefix> &nbsp;</span>
-    <input type="number" matInput placeholder="CRM" [(ngModel)]='crm'>
-</mat-form-field>
+<div class="input">
+    <mat-form-field class="example-full-width">
+        <mat-label>CRM</mat-label>
+        <span matPrefix> &nbsp;</span>
+        <input type="number" matInput placeholder="CRM" [(ngModel)]='crm'>
+    </mat-form-field>
 
-<button mat-button color="primary" (click)="delete()">
-    <mat-icon>delete</mat-icon>
-</button>
+    <button mat-button color="primary" (click)="delete()">
+        <mat-icon>delete</mat-icon>
+    </button>
+    <p *ngIf="error.isError">{{error.errorMessage}}</p>
+
+</div>
 
 <p *ngIf="deleted">Medico deletado</p>

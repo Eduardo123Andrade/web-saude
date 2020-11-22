@@ -1,3 +1,4 @@
+import { HttpErrorRequest } from './../../errors/HtttpErrorHandler';
 import { Doctor } from './../../models/Doctor';
 import { DoctorService } from 'src/app/services/doctor/doctor.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -13,6 +14,7 @@ export class UpdateDoctorDetailComponent implements OnInit {
   @Input() doctor!: Doctor
   updatede: boolean = false
   public doctorForm: FormGroup = new FormGroup({})
+  error: HttpErrorRequest = this.defaultErrorValue()
 
 
   constructor(public doctorService: DoctorService) { }
@@ -32,11 +34,21 @@ export class UpdateDoctorDetailComponent implements OnInit {
 
   async updateDoctor(doctor: Doctor) {
     this.updatede = false
+    this.error = this.defaultErrorValue()
+    try {
       this.updatede = await this.doctorService.updateDoctor(this.doctor.crm, doctor)
+    } catch (err) {
+      this.error = err.error
+      console.log(this.error)
+    }
   }
 
 
   public hasError = (controlName: string, errorName: string) => {
     return this.doctorForm.controls[controlName].hasError(errorName);
+  }
+
+  defaultErrorValue(): HttpErrorRequest {
+    return { isError: false, errorMessage: '', status: 0 }
   }
 }

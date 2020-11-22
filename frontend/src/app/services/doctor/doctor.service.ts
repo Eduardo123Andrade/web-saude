@@ -1,3 +1,4 @@
+import { HtttpErrorHandler, HttpErrorRequest } from './../../errors/HtttpErrorHandler';
 import { Injectable } from '@angular/core';
 import { Doctor } from './../../models/Doctor';
 import { HttpClient } from '@angular/common/http';
@@ -5,6 +6,11 @@ import { environment } from "../../../environments/environment.prod";
 
 const BACKEND_URL = environment.apiUrl + "/doctors"
 
+interface RequestFail {
+  isError: boolean
+  errorMessage: string
+  status: number
+}
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +52,13 @@ export class DoctorService {
       .then(result => {
         return !!result.deleted
       })
+      .catch(err => {
+        throw new HtttpErrorHandler({
+          isError: true,
+          errorMessage: err.error.message,
+          status: err.status
+        })
+      })
   }
 
 
@@ -61,16 +74,29 @@ export class DoctorService {
           name: doctor.name
         }
       })
+      .catch(err => {
+        throw new HtttpErrorHandler({
+          isError: true,
+          errorMessage: err.error.message,
+          status: err.status
+        })
+      })
   }
 
   async updateDoctor(crm: string, doctor: Doctor): Promise<boolean> {
-    // async updateDoctor(doctor: Doctor): Promise<Doctor> {
     const link = `${BACKEND_URL}/${crm}`
-    return this.http.put<{message: string, doctor: Doctor}>(link, doctor)
+    return this.http.put<{ message: string, doctor: Doctor }>(link, doctor)
       .toPromise()
       .then(result => {
         console.log(result.message)
         return !!result.doctor
+      })
+      .catch(err => {
+        throw new HtttpErrorHandler({
+          isError: true,
+          errorMessage: err.error.message,
+          status: err.status
+        })
       })
   }
 
