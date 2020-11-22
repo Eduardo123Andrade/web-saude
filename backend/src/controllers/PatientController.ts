@@ -44,7 +44,7 @@ export default {
         }
 
         const schema = yup.object().shape({
-            name: yup.string().required('Nome é obrigatorio'),
+            name: yup.string().required('Nome é obrigatorio').max(255, 'O Nome deve conter no maximo 255 carcteres'),
             birthDate: yup.string().required('Data de nascimento é obrigatorio').length(10),
             gender: yup.string().required('Sexo de nascimento é obrigatorio').oneOf(['M', 'F'], 'Aceita apenas F ou M'),
         })

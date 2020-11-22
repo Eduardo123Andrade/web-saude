@@ -103,7 +103,7 @@ async function validateData(name: any, password: any, crm: any) {
     };
 
     const schema = yup.object().shape({
-        name: yup.string().required('Nome é obrigatorio'),
+        name: yup.string().required('Nome é obrigatorio').max(255, 'O Nome deve conter no maximo 255 carcteres'),
         password: yup.string().required('Senha é obrigatorio').min(6, 'A seha deve conter no minimo 6 caracteres'),
         crm: yup.string().required('Numero do CRM é obrigatorio').length(6, 'O numero do CRM é exatamente 6 caracteres'),
     });
