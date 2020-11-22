@@ -63,4 +63,16 @@ export class DoctorService {
       })
   }
 
+  async updateDoctor(crm: string, doctor: Doctor): Promise<boolean> {
+    // async updateDoctor(doctor: Doctor): Promise<Doctor> {
+    const link = `${BACKEND_URL}/${crm}`
+    return this.http.put<{message: string, doctor: Doctor}>(link, doctor)
+      .toPromise()
+      .then(result => {
+        console.log(result.message)
+        return !!result.doctor
+      })
+  }
+
+
 }

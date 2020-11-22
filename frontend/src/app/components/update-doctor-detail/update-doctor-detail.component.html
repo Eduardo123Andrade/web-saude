@@ -1,0 +1,35 @@
+<mat-card>
+    <form [formGroup]="doctorForm" autocomplete="off" novalidate>
+        <mat-form-field appearance="standard">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Nome" formControlName='name' required>
+            <mat-error *ngIf="hasError('name', 'required')">Nome é obrigatorio</mat-error>
+            <mat-error *ngIf="hasError('name', 'minlength')">O nome deve ter no minimo 10 caracteres</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+            <mat-label>CRM</mat-label>
+            <input matInput type="number" placeholder="CRM" formControlName="crm" id="crm" required>
+            <mat-error *ngIf="hasError('crm', 'required')">CRM é obrigatorio</mat-error>
+            <mat-error *ngIf="hasError('crm', 'maxlength')">CRM tem apenas 6 digitos</mat-error>
+            <mat-error *ngIf="hasError('crm', 'minlength')">CRM tem apenas 6 digitos</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+            <mat-label>Senha</mat-label>
+            <input matInput type='password' placeholder="Senha" formControlName="password" required>
+            <mat-error *ngIf="hasError('password', 'required')">Senha é obrigatorio</mat-error>
+            <mat-error *ngIf="hasError('password', 'minlength')">A senha deve ter no minimo 6 caracteres</mat-error>
+        </mat-form-field>
+
+        <div class="footer">
+            <p *ngIf="updatede">Medico atualizado</p>
+
+            <div class="button">
+                <button mat-raised-button color="primary" (click)='update(doctorForm.value)'>Atulizar</button>
+            </div>
+        </div>
+
+    </form>
+</mat-card>

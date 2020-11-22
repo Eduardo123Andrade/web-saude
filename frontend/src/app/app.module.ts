@@ -35,6 +35,8 @@ import { SwitchComponentsComponent } from './components/switch-components/switch
 import { DeleteDoctorsComponent } from './components/delete-doctors/delete-doctors.component';
 import { ShowDoctorComponent } from './components/show-doctor/show-doctor.component';
 import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
+import { UpdateDoctorComponent } from './components/update-doctor/update-doctor.component';
+import { UpdateDoctorDetailComponent } from './components/update-doctor-detail/update-doctor-detail.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { DoctorDetailsComponent } from './components/doctor-details/doctor-detai
     DeleteDoctorsComponent,
     ShowDoctorComponent,
     DoctorDetailsComponent,
+    UpdateDoctorComponent,
+    UpdateDoctorDetailComponent,
   ],
   imports: [
     BrowserModule,

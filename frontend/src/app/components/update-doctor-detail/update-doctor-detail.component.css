@@ -1,0 +1,34 @@
+mat-card {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .button {
+    margin-top: 1%;
+  }
+  
+  /*remove arrow from input type number*/
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /*remove arrow from input type number*/
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }

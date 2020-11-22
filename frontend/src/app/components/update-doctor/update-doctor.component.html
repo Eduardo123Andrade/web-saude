@@ -1,0 +1,12 @@
+<p>Atualizar Medico</p>
+<mat-form-field class="example-full-width">
+    <mat-label>CRM</mat-label>
+    <span matPrefix> &nbsp;</span>
+    <input type="number" matInput placeholder="CRM" [(ngModel)]='crm'>
+</mat-form-field>
+
+<button mat-button color="primary" (click)="update()">
+    <mat-icon>search</mat-icon>
+</button>
+
+<app-update-doctor-detail *ngIf="showDoctorDetails" [doctor]='doctor'></app-update-doctor-detail>
