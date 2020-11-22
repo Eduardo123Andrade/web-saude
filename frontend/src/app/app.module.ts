@@ -32,6 +32,7 @@ import { AuthInterceptor } from './services/auth/auth-interceptor';
 import { AdminComponent } from './components/admin/admin.component';
 import { ListDoctorsComponent } from './components/list-doctors/list-doctors.component';
 import { SwitchComponentsComponent } from './components/switch-components/switch-components.component';
+import { DeleteDoctorsComponent } from './components/delete-doctors/delete-doctors.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { SwitchComponentsComponent } from './components/switch-components/switch
     AdminComponent,
     ListDoctorsComponent,
     SwitchComponentsComponent,
+    DeleteDoctorsComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
-
 interface AdminAction {
   iconName: string,
   name: string,
@@ -19,7 +18,7 @@ export enum Action {
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  action!: Action 
+  action!: Action
   showComponent: boolean = false
 
   filesPath: AdminAction[] = [
@@ -54,12 +53,10 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  setAction(action: Action){
+  setAction(action: Action) {
     this.showComponent = false
     this.showComponent = true
     this.action = action
-
-
   }
 
 }

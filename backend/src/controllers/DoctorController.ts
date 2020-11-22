@@ -34,7 +34,7 @@ export default {
         if(!doctor) return response.status(404).json({message: `CRM ${crm} não encontrado`})
 
         await repository.delete(doctor)
-        return response.status(200).json({ message: `CRM ${crm} deletado` })
+        return response.status(200).json({ message: `CRM ${crm} deletado`, deleted: true })
     },
 
     async show(request: Request, response: Response) {

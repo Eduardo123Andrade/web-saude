@@ -1,0 +1,14 @@
+<!-- <form class="example-form"> -->
+<mat-form-field class="example-full-width">
+    <mat-label>CRM</mat-label>
+    <span matPrefix> &nbsp;</span>
+    <input type="number" matInput placeholder="CRM" [(ngModel)]='crm'>
+    <!-- <mat-icon matSuffix>mode_delete</mat-icon> -->
+</mat-form-field>
+
+<button mat-button color="primary" (click)="delete()">
+    <mat-icon>delete</mat-icon>
+</button>
+
+<p *ngIf="deleted">Medico deletado</p>
+<!-- </form> -->

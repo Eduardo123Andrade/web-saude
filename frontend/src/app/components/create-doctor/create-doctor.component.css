@@ -1,8 +1,8 @@
 mat-card {
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    /* position: absolute;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  /* position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -11,24 +11,24 @@ mat-card {
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .button {
-    margin-top: 1%;
-    display: flex;
-    justify-content: flex-end;
+  margin-top: 1%;
+  display: flex;
+  justify-content: flex-end;
 }
 
- /*remove arrow from input type number*/
+/*remove arrow from input type number*/
 /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
- /*remove arrow from input type number*/
+
+/*remove arrow from input type number*/
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;

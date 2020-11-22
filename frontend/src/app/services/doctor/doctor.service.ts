@@ -3,7 +3,7 @@ import { Doctor } from './../../models/Doctor';
 import { HttpClient } from '@angular/common/http';
 import { environment } from "../../../environments/environment.prod";
 
-const BACKEND_URL = environment.apiUrl + "/doctor/"
+const BACKEND_URL = environment.apiUrl + "/doctors"
 
 
 @Injectable({
@@ -23,7 +23,6 @@ export class DoctorService {
   }
 
 
-  // async listDoctors() {
   async listDoctors(): Promise<Doctor[]> {
     const link = BACKEND_URL
     return this.http.get(link)
@@ -37,6 +36,15 @@ export class DoctorService {
             crm: doctor.crm
           }
         })
+      })
+  }
+
+  async deleteDoctor(doctor: Doctor): Promise<boolean> {
+    const link = `${BACKEND_URL}/${doctor.crm}`
+    return await this.http.delete<{ message: string, deleted?: boolean }>(link)
+      .toPromise()
+      .then(result => {
+        return !!result.deleted
       })
   }
 
