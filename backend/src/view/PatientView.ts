@@ -7,7 +7,7 @@ export default {
             name: patient.name,
             birthDate: patient.birthDate,
             gender: patient.gender,
-            comorbidities: {
+            comorbiditie: {
                 smoke: patient.comorbiditie.smoke,
                 drink: patient.comorbiditie.drink,
                 hypertension: patient.comorbiditie.hypertension,
@@ -17,7 +17,7 @@ export default {
                 asthma: patient.comorbiditie.asthma
             },
             family: {
-                comorbidities: {
+                comorbiditie: {
                     smoke: patient.family.comorbiditie.smoke,
                     drink: patient.family.comorbiditie.drink,
                     hypertension: patient.family.comorbiditie.hypertension,
