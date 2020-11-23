@@ -58,6 +58,7 @@ export class CreatePatientComponent implements OnInit {
     this.patient.gender = gender.substring(0, 1)
 
     this.patientService.createNewPatient(this.patient)
+    // console.log(this.patient)
   }
 
   public hasError = (controlName: string, errorName: string) => {

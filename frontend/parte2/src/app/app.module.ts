@@ -1,9 +1,10 @@
+import { ChronicDiseasesComponent } from './components/chronic-diseases/chronic-diseases.component';
 import { AuthInterceptor } from './services/auth/auth-interceptor';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,12 +17,13 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatIconModule } from '@angular/material/icon'
 import { MatTableModule } from '@angular/material/table'
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatListModule } from '@angular/material/list'
 import { CdkTableModule } from '@angular/cdk/table'
 import { MatInputModule } from '@angular/material/input'
+import { MatDividerModule } from '@angular/material/divider';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
@@ -30,6 +32,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     HeaderComponent,
     LoginComponent,
     HomeComponent,
+    ChronicDiseasesComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     MatInputModule,
     HttpClientModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatDividerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
