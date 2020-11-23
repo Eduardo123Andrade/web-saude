@@ -1,16 +1,10 @@
-import { HtttpErrorHandler, HttpErrorRequest } from './../../errors/HtttpErrorHandler';
+import { HttpErrorHandler, HttpErrorRequest } from '../../errors/HttpErrorHandler';
 import { Injectable } from '@angular/core';
 import { Doctor } from './../../models/Doctor';
 import { HttpClient } from '@angular/common/http';
 import { environment } from "../../../environments/environment.prod";
 
 const BACKEND_URL = environment.apiUrl + "/doctors"
-
-interface RequestFail {
-  isError: boolean
-  errorMessage: string
-  status: number
-}
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +24,7 @@ export class DoctorService {
         }
       })
       .catch(err => {
-        throw new HtttpErrorHandler({
+        throw new HttpErrorHandler({
           isError: true,
           errorMessage: err.error.message,
           status: err.status
@@ -63,7 +57,7 @@ export class DoctorService {
         return !!result.deleted
       })
       .catch(err => {
-        throw new HtttpErrorHandler({
+        throw new HttpErrorHandler({
           isError: true,
           errorMessage: err.error.message,
           status: err.status
@@ -85,7 +79,7 @@ export class DoctorService {
         }
       })
       .catch(err => {
-        throw new HtttpErrorHandler({
+        throw new HttpErrorHandler({
           isError: true,
           errorMessage: err.error.message,
           status: err.status
@@ -102,7 +96,7 @@ export class DoctorService {
         return !!result.doctor
       })
       .catch(err => {
-        throw new HtttpErrorHandler({
+        throw new HttpErrorHandler({
           isError: true,
           errorMessage: err.error.message,
           status: err.status

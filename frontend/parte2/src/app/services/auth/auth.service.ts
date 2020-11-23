@@ -1,3 +1,4 @@
+import { HttpErrorHandler } from './../../components/errors/HttpErrorHandler';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthData } from './auth-data';
@@ -19,10 +20,11 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
-  login(authData: AuthData) {
+  async login(authData: AuthData): Promise<boolean> {
     const link = `${BACKEND_URL}/auth/login`
-    this.httpClient.post<{ token: string, expiresIn: number }>(link, authData)
-      .subscribe(response => {
+    return this.httpClient.post<{ token: string, expiresIn: number }>(link, authData)
+      .toPromise()
+      .then(response => {
         const token = response.token
         if (token) {
           this.token = token
@@ -33,9 +35,10 @@ export class AuthService {
           const now = new Date()
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000)
           this.saveAuthData(token, expirationDate)
-
-          this.router.navigate(['/home'])
         }
+        return !!token
+      }).catch(err => {
+        throw new HttpErrorHandler({ status: err.status, errorMessage: err.error.message, isError: true })
       })
   }
 

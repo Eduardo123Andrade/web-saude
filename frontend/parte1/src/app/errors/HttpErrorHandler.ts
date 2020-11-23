@@ -7,7 +7,7 @@ export interface HttpErrorRequest {
     status: number
 }
 
-export class HtttpErrorHandler {
+export class HttpErrorHandler {
     
     constructor(private error: HttpErrorRequest){}
 

@@ -1,6 +1,4 @@
 import { Comorbidity } from './../../models/Comorbidity';
-import { ActivatedRoute } from '@angular/router';
-import { PatientService } from '../../services/patient/patient.service';
 import { Patient } from '../../models/Patient';
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'

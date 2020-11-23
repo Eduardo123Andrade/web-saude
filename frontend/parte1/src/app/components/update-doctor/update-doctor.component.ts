@@ -1,4 +1,4 @@
-import { HttpErrorRequest } from './../../errors/HtttpErrorHandler';
+import { HttpErrorRequest } from '../../errors/HttpErrorHandler';
 import { DoctorService } from 'src/app/services/doctor/doctor.service';
 import { Doctor } from './../../models/Doctor';
 import { Component, OnInit } from '@angular/core';

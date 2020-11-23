@@ -1,4 +1,4 @@
-import { HttpErrorRequest } from './../../errors/HtttpErrorHandler';
+import { HttpErrorRequest } from '../../errors/HttpErrorHandler';
 import { Doctor } from './../../models/Doctor';
 import { DoctorService } from 'src/app/services/doctor/doctor.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';

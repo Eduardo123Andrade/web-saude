@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
 
     if (validate) {
       await this.initializeData()
-      this.showList = validate
+      this.showList = validate  
     }
 
   }
