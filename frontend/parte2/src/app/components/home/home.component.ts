@@ -1,4 +1,4 @@
-import { element } from 'protractor';
+import { Router } from '@angular/router';
 import { Patient } from './../../models/Patient';
 import { PatientService } from './../../services/patient/patient.service';
 import { animate, state, style, transition, trigger } from '@angular/animations'
@@ -21,11 +21,14 @@ import { MatPaginator } from '@angular/material/paginator';
 export class HomeComponent implements OnInit {
 
   patients: Patient[] = []
+  patientToUpdate!: Patient
+
   columnsToDisplay: string[] = ['id', 'name', 'birthDate', 'gender']
   expandedElement!: Patient | null;
   dataSource: MatTableDataSource<Patient> = new MatTableDataSource(this.patients)
+  showList: boolean = true
 
-  constructor(private patientService: PatientService) { }
+  constructor(private patientService: PatientService, private router: Router) { }
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   async ngOnInit() {
@@ -45,10 +48,8 @@ export class HomeComponent implements OnInit {
   }
 
   async update(patient: Patient) {
-    const result = await this.patientService.deletePatient(patient)
-    if (result) {
-      await this.initializeData()
-    }
+    this.patientToUpdate = patient
+    this.showList = !this.showList
   }
 
 
@@ -56,6 +57,19 @@ export class HomeComponent implements OnInit {
     this.patients = await this.patientService.listPatient()
     this.dataSource = new MatTableDataSource(this.patients)
     this.dataSource.paginator = this.paginator
+  }
+
+  async recivePatient(patient: Patient) {
+    const validate = await this.patientService.updatePatient(patient)
+      .then(result => {
+        return result
+      })
+
+    if (validate) {
+      await this.initializeData()
+      this.showList = validate
+    }
+
   }
 
 }

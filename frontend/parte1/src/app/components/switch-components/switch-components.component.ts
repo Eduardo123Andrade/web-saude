@@ -13,17 +13,6 @@ export class SwitchComponentsComponent implements OnInit {
   constructor(public route: Router) { }
 
   ngOnInit(): void {
-    // switch (this.action) {
-    //   case Action.CREATE:
-    //     this.route.navigate(['/create-doctor'])
-    //     break;
-    //   case Action.LIST:
-    //     this.route.navigate(['/list-doctor'])
-    //     break;
-    //   default:
-    //     break;
-    // }
-
   }
 
 }

@@ -3,7 +3,7 @@
         <ul>
             <li *ngFor="let disease of chronicDiseases">
                 <mat-checkbox [(ngModel)]="disease.checked" [color]="disease.color"
-                    (ngModelChange)="changeChecked(disease)" [disabled]="true">
+                    (ngModelChange)="changeChecked(disease)" [disabled]="disable">
                     {{disease.name}}
                 </mat-checkbox>
             </li>

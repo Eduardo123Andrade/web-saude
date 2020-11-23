@@ -5,8 +5,8 @@ export interface Patient {
     name: string,
     birthDate: string,
     gender: string,
-    comorbidities: Comorbidity,
+    comorbiditie: Comorbidity,
     family?: {
-        comorbidities: Comorbidity,
+        comorbiditie: Comorbidity,
     }
 }

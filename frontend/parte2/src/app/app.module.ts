@@ -4,7 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,11 +20,11 @@ import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field'
-import { MatListModule } from '@angular/material/list'
-import { CdkTableModule } from '@angular/cdk/table'
+import { NgxMaskModule } from 'ngx-mask'
 import { MatInputModule } from '@angular/material/input'
 import { MatDividerModule } from '@angular/material/divider';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { UpdatePatientComponent } from './components/update-patient/update-patient.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     HeaderComponent,
     LoginComponent,
     HomeComponent,
-    ChronicDiseasesComponent
+    ChronicDiseasesComponent,
+    UpdatePatientComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     MatCheckboxModule,
     MatPaginatorModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

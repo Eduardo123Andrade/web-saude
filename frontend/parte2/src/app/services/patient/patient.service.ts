@@ -17,7 +17,6 @@ export class PatientService {
     const link = BACKEND_URL
     this.http.post<{ message: string }>(link, patient)
       .subscribe((responseData) => {
-        console.log(responseData)
       })
   }
 
@@ -50,7 +49,6 @@ export class PatientService {
     return this.http.put(link, patient)
       .toPromise()
       .then(result => {
-        console.log(result)
         return !!result
       })
   }

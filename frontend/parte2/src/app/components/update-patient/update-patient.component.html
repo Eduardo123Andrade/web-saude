@@ -1,0 +1,49 @@
+<mat-card class="container">
+    <p>Registro do Paciente</p>
+
+    <form [formGroup]="patientForm" autocomplete="off" novalidate>
+        <mat-card class="personal-datails">
+            <mat-form-field appearance="standard">
+                <mat-label>Nome</mat-label>
+                <input matInput placeholder="Nome" formControlName='name' required>
+                <mat-error *ngIf="hasError('name', 'required')">Nome é obrigatorio</mat-error>
+                <mat-error *ngIf="hasError('name', 'minlength')">O nome deve ter no minimo 10 caracteres
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard">
+                <mat-label>Data de Nascimento</mat-label>
+                <input matInput mask="00/00/0000" placeholder="Data de Nascimento" formControlName='birthDate' required>
+                <mat-error *ngIf="hasError('birthDate', 'required')">Data de nascimento é obrigatorio</mat-error>
+                <mat-error *ngIf="hasError('birthDate', 'minlength')">A senha deve ter no minimo 8 caracteres
+                </mat-error>
+            </mat-form-field>
+
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                formControlName='gender'>
+                <mat-radio-button class="example-radio-button" *ngFor="let gender of genders; let i = index"
+                    [value]="gender.value" required [checked]='gender.checked'>
+                    {{gender.value}}
+                </mat-radio-button>
+            </mat-radio-group>
+
+        </mat-card>
+
+        <mat-card class="self-details">
+            <p>Doenças Crônicas - Pessoais</p>
+            <app-chronic-diseases [disable]=false (eventEmitter)='reciveSelfComorbity($event)'
+                [comorbiditie]='this.patient.comorbiditie'></app-chronic-diseases>
+        </mat-card>
+
+        <mat-card class="family-details">
+            <p>Doenças Crônicas - Família</p>
+            <app-chronic-diseases [disable]=false [comorbiditie]='this.patient.family?.comorbiditie'>
+            </app-chronic-diseases>
+        </mat-card>
+
+        <div class="button">
+            <button mat-raised-button color="primary" (click)='cadastrar(patientForm.value)'>Cadastrar</button>
+        </div>
+    </form>
+
+</mat-card>

@@ -17,7 +17,9 @@ export interface ChronicDiseases {
 export class ChronicDiseasesComponent implements OnInit {
   @Output() eventEmitter = new EventEmitter()
 
-  @Input() comorbidities: Comorbidity = {
+  @Input() disable: boolean = true
+
+  @Input() comorbiditie: Comorbidity | undefined = {
     asthma: false, diabetes: false, drink: false, heartDisease: false, hypertension: false, hypotension: false, smoke: false
   }
 
@@ -48,27 +50,28 @@ export class ChronicDiseasesComponent implements OnInit {
   }
 
   private getCheckedFromComorbidities(fieldName: string): boolean {
+    if (!this.comorbiditie) return false
     switch (fieldName) {
       case 'smoke': {
-        return this.comorbidities[fieldName];
+        return this.comorbiditie[fieldName];
       }
       case 'drink': {
-        return this.comorbidities[fieldName];
+        return this.comorbiditie[fieldName];
       }
       case 'hypertension': {
-        return this.comorbidities[fieldName];
+        return this.comorbiditie[fieldName];
       }
       case 'hypotension': {
-        return this.comorbidities[fieldName];
+        return this.comorbiditie[fieldName];
       }
       case 'heartDisease': {
-        return this.comorbidities[fieldName];
+        return this.comorbiditie[fieldName];
       }
       case 'diabetes': {
-        return this.comorbidities[fieldName];
+        return this.comorbiditie[fieldName];
       }
       case 'asthma': {
-        return this.comorbidities[fieldName];
+        return this.comorbiditie[fieldName];
       }
       default:
         return false
@@ -77,37 +80,38 @@ export class ChronicDiseasesComponent implements OnInit {
 
   changeChecked(disease: ChronicDiseases) {
     this.updateComorbidities(disease.fieldName, disease.checked)
-    this.eventEmitter.emit(this.comorbidities)
+    this.eventEmitter.emit(this.comorbiditie)
   }
 
   updateComorbidities(fieldName: string, checked: boolean) {
+    if (!this.comorbiditie) return
     switch (fieldName) {
       case 'smoke': {
-        this.comorbidities[fieldName] = checked
+        this.comorbiditie[fieldName] = checked
         break;
       }
       case 'drink': {
-        this.comorbidities[fieldName] = checked
+        this.comorbiditie[fieldName] = checked
         break;
       }
       case 'hypertension': {
-        this.comorbidities[fieldName] = checked
+        this.comorbiditie[fieldName] = checked
         break;
       }
       case 'hypotension': {
-        this.comorbidities[fieldName] = checked
+        this.comorbiditie[fieldName] = checked
         break;
       }
       case 'heartDisease': {
-        this.comorbidities[fieldName] = checked
+        this.comorbiditie[fieldName] = checked
         break;
       }
       case 'diabetes': {
-        this.comorbidities[fieldName] = checked
+        this.comorbiditie[fieldName] = checked
         break;
       }
       case 'asthma': {
-        this.comorbidities[fieldName] = checked
+        this.comorbiditie[fieldName] = checked
         break;
       }
 

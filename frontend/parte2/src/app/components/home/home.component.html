@@ -1,55 +1,64 @@
 <mat-card class="container">
-    <mat-form-field class="input">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Input" #input>
-    </mat-form-field>
+    <div *ngIf="showList" class='table'>
+        <mat-form-field class="input">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Input" #input>
+        </mat-form-field>
 
-    <div class="list">
-        <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
-            <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-                <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-                <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-            </ng-container>
+        <div class="list">
+            <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+                <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+                    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+                    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+                </ng-container>
 
-            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-            <ng-container matColumnDef="expandedDetail">
-                <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-                    <div class="example-element-detail"
-                        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-                        <div class="details">
-                            <div>
-                                <p>Resultado do Paciente</p>
-                                <app-chronic-diseases [comorbidities]='element.comorbidities'></app-chronic-diseases>
+                <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+                <ng-container matColumnDef="expandedDetail">
+                    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+                        <div class="example-element-detail"
+                            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                            <div class="details">
+                                <div>
+                                    <p>Resultado do Paciente</p>
+                                    <app-chronic-diseases [comorbiditie]='element.comorbiditie'>
+                                    </app-chronic-diseases>
+                                </div>
+
+                                <div>
+                                    <p>Resultado da familia</p>
+                                    <app-chronic-diseases [comorbiditie]='element.family?.comorbiditie'>
+                                    </app-chronic-diseases>
+                                </div>
+
+                                <div class="action-buttons">
+                                    <button mat-button color="primary" (click)='update(element)'>
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+
+                                    <button mat-button color="primary" (click)="delete(element)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </div>
+
                             </div>
-
-                            <div>
-                                <p>Resultado da familia</p>
-                                <app-chronic-diseases [comorbidities]='element.family?.comorbidities'>
-                                </app-chronic-diseases>
-                            </div>
-
-                            <div class="action-buttons">
-                                <button mat-button color="primary">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
-
-                                <button mat-button color="primary" (click)="delete(element)">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
-                            </div>
-
                         </div>
-                    </div>
-                </td>
-            </ng-container>
+                    </td>
+                </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-            <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
-                [class.example-expanded-row]="expandedElement === element"
-                (click)="expandedElement = expandedElement === element ? null : element">
-            </tr>
-            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-        </table>
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
+                    [class.example-expanded-row]="expandedElement === element"
+                    (click)="expandedElement = expandedElement === element ? null : element">
+                </tr>
+                <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+            </table>
+        </div>
+        <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
     </div>
-    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+
+    <div *ngIf="!showList" class="update">
+        <app-update-patient (eventEmitter)='recivePatient($event)' [patient]='patientToUpdate' class="teste">
+        </app-update-patient>
+    </div>
+
 </mat-card>
