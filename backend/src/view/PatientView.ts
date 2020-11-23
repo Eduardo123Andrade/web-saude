@@ -8,13 +8,13 @@ export default {
             birthDate: patient.birthDate,
             gender: patient.gender,
             comorbidities: {
-                smoke: patient.family.comorbiditie.smoke,
-                drink: patient.family.comorbiditie.drink,
-                hypertension: patient.family.comorbiditie.hypertension,
-                hypotension: patient.family.comorbiditie.hypotension,
-                heartDisease: patient.family.comorbiditie.heartDisease,
-                diabetes: patient.family.comorbiditie.diabetes,
-                asthma: patient.family.comorbiditie.asthma
+                smoke: patient.comorbiditie.smoke,
+                drink: patient.comorbiditie.drink,
+                hypertension: patient.comorbiditie.hypertension,
+                hypotension: patient.comorbiditie.hypotension,
+                heartDisease: patient.comorbiditie.heartDisease,
+                diabetes: patient.comorbiditie.diabetes,
+                asthma: patient.comorbiditie.asthma
             },
             family: {
                 comorbidities: {
